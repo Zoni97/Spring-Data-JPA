@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Classes")
@@ -23,5 +24,8 @@ public class Classes {
 
     @Column(nullable = false)
     private String decription;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "classes")
+    private List<Enrollments> enrollments;
 
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Students")
@@ -26,6 +27,9 @@ public class Students {
 
     @Column(unique = true)
     private String email;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "students")
+    private List<Enrollments> enrollments;
 
 
 }
